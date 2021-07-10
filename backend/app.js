@@ -5,6 +5,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const productsRouter = require("./routers/products");
 const categoriesRouter = require("./routers/categories");
+const usersRouter = require("./routers/users");
+const authJWT = require("./helpers/jwt");
+const errorHandler = require("./helpers/error-handler");
 require("dotenv/config");
 
 const app = express();
@@ -17,10 +20,13 @@ app.options("*", cors());
 
 app.use(bodyParser.json());
 app.use(morgan("tiny"));
+app.use(authJWT());
+app.use(errorHandler);
 
 // Routers
 app.use(`${api}/products`, productsRouter);
 app.use(`${api}/categories`, categoriesRouter);
+app.use(`${api}/users`, usersRouter);
 
 //Database
 mongoose
