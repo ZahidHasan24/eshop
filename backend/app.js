@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const productsRouter = require("./routers/products");
+const categoriesRouter = require("./routers/categories");
 require("dotenv/config");
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(morgan("tiny"));
 
 // Routers
 app.use(`${api}/products`, productsRouter);
+app.use(`${api}/categories`, categoriesRouter);
 
 //Database
 mongoose
