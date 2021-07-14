@@ -6,6 +6,7 @@ const cors = require("cors");
 const productsRouter = require("./routers/products");
 const categoriesRouter = require("./routers/categories");
 const usersRouter = require("./routers/users");
+const ordersRouter = require("./routers/orders");
 const authJWT = require("./helpers/jwt");
 const errorHandler = require("./helpers/error-handler");
 require("dotenv/config");
@@ -27,6 +28,7 @@ app.use(errorHandler);
 app.use(`${api}/products`, productsRouter);
 app.use(`${api}/categories`, categoriesRouter);
 app.use(`${api}/users`, usersRouter);
+app.use(`${api}/orders`, ordersRouter);
 
 //Database
 mongoose
